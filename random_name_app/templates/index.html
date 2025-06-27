@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Name Picker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Pull a Random Name</h1>
+        <button id="getName">Get Random Name</button>
+        <p id="displayName"></p>
+    </div>
+
+    <script>
+        document.getElementById("getName").addEventListener("click", () => {
+            fetch("/random")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("displayName").textContent = data.name;
+                });
+        });
+    </script>
+</body>
+</html>
